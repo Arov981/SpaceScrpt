@@ -1,0 +1,377 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ------------------------------------------------------------------ */
+/* Paper (light) — warm neutral minimal palette                        */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --radius: 0.5rem;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --card: #ffffff;
+  --card-foreground: #18181b;
+  --popover: #ffffff;
+  --popover-foreground: #18181b;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #27272a;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #27272a;
+  --destructive: #dc2626;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #d97706;
+  --chart-1: #d97706;
+  --chart-2: #059669;
+  --chart-3: #e11d48;
+  --chart-4: #ca8a04;
+  --chart-5: #0d9488;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #18181b;
+  --sidebar-primary: #18181b;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f4f4f5;
+  --sidebar-accent-foreground: #27272a;
+  --sidebar-border: #e4e4e7;
+  --sidebar-ring: #d97706;
+
+  /* Legacy space aliases (kept neutral) */
+  --space-page: #fafafa;
+  --space-page-deep: #f4f4f5;
+  --space-surface: #ffffff;
+  --space-hero: #fafafa;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: #e4e4e7;
+  --glass-shadow: 0 8px 32px rgba(24, 24, 27, 0.06);
+}
+
+/* ------------------------------------------------------------------ */
+/* Ink (dark) — near-black neutral minimal palette                     */
+/* ------------------------------------------------------------------ */
+
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #101012;
+  --card-foreground: #fafafa;
+  --popover: #101012;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #18181b;
+  --secondary: #18181b;
+  --secondary-foreground: #f4f4f5;
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --accent: #1c1c1f;
+  --accent-foreground: #f4f4f5;
+  --destructive: #ef4444;
+  --border: #26262a;
+  --input: #26262a;
+  --ring: #f59e0b;
+  --chart-1: #f59e0b;
+  --chart-2: #10b981;
+  --chart-3: #f43f5e;
+  --chart-4: #eab308;
+  --chart-5: #14b8a6;
+  --sidebar: #101012;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #fafafa;
+  --sidebar-primary-foreground: #18181b;
+  --sidebar-accent: #1c1c1f;
+  --sidebar-accent-foreground: #f4f4f5;
+  --sidebar-border: #26262a;
+  --sidebar-ring: #f59e0b;
+
+  /* Legacy space aliases (kept neutral) */
+  --space-page: #09090b;
+  --space-page-deep: #0c0c0e;
+  --space-surface: #101012;
+  --space-hero: #09090b;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: rgba(245, 158, 11, 0.35);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilities                                                           */
+/* ------------------------------------------------------------------ */
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Subtle dotted grid backdrop for the hero */
+.dot-grid {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--foreground) 14%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 30%, transparent 75%);
+}
+
+/* Custom scrollbars for long lists */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(161, 161, 170, 0.35) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(161, 161, 170, 0.35);
+  border-radius: 999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(161, 161, 170, 0.6);
+}
+
+/* Hide scrollbar but keep scrollability for tab strips */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes shimmer-sweep {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.chip-running {
+  background-image: linear-gradient(
+    90deg,
+    rgba(245, 158, 11, 0.04),
+    rgba(245, 158, 11, 0.45),
+    rgba(245, 158, 11, 0.04)
+  );
+  background-size: 200% 100%;
+  animation: shimmer-sweep 1.6s linear infinite;
+}
+
+/* Studio window accent hook: themed by the Themes tab at runtime */
+.studio-window {
+  --ss-accent: #f59e0b;
+  --ss-accent2: #fbbf24;
+  --ss-surface: #101012;
+  --ss-text: #fafafa;
+  transition: box-shadow 0.5s ease;
+  box-shadow: 0 0 46px -14px color-mix(in srgb, var(--ss-accent) 30%, transparent);
+}
+.studio-window .studio-accent-strip {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--ss-accent),
+    var(--ss-accent2),
+    transparent
+  );
+  transition: background-image 0.5s ease;
+}
+.studio-window [role="tab"][data-state="active"] {
+  box-shadow: inset 0 -2px 0 0 var(--ss-accent);
+}
+
+/* Markdown bodies rendered inside chat / mission replies */
+.md-body {
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+.md-body > :first-child {
+  margin-top: 0;
+}
+.md-body > :last-child {
+  margin-bottom: 0;
+}
+.md-body p {
+  margin: 0.5rem 0;
+}
+.md-body h1,
+.md-body h2,
+.md-body h3,
+.md-body h4 {
+  font-weight: 600;
+  margin: 0.85rem 0 0.35rem;
+  color: var(--foreground);
+}
+.md-body h1 {
+  font-size: 1.05rem;
+}
+.md-body h2 {
+  font-size: 1rem;
+}
+.md-body h3,
+.md-body h4 {
+  font-size: 0.925rem;
+}
+.md-body ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+.md-body ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+.md-body li {
+  margin: 0.25rem 0;
+}
+.md-body strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.md-body a {
+  color: #d97706;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.md-body blockquote {
+  border-left: 2px solid rgba(245, 158, 11, 0.5);
+  padding-left: 0.75rem;
+  margin: 0.5rem 0;
+  color: var(--muted-foreground);
+}
+.md-body code {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  padding: 0.08rem 0.35rem;
+  border-radius: 0.375rem;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.82em;
+  color: #b45309;
+}
+.dark .md-body code {
+  color: #fcd34d;
+}
+.md-body pre {
+  margin: 0.6rem 0;
+}
+.md-body pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--foreground);
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion                                                      */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .chip-running {
+    animation: none;
+    background: rgba(245, 158, 11, 0.2);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Framer Motion SSR safety net                                        */
+/*                                                                    */
+/* Framer Motion server-renders every animated element with an inline */
+/* style like opacity:0;transform:translateY(16px) — the "initial"    */
+/* state. On the client, Motion hydrates and animates these to their   */
+/* final state (opacity:1, transform:none). But if hydration is slow  */
+/* or fails entirely (e.g. the HMR WebSocket is blocked through a     */
+/* preview proxy, a JS chunk 404s on a flaky mobile network, or the   */
+/* browser quenches the bootstrap), those elements stay at opacity:0  */
+/* forever and the page looks blank even though the HTML is there.    */
+/*                                                                    */
+/* This rule forces any element stuck in the Motion initial state     */
+/* visible after a 2.5s grace period — long enough that a healthy     */
+/* hydration+animation cycle finishes first, short enough that a real */
+/* user never sees a blank page for more than ~2.5s. The selector is  */
+/* deliberately narrow: it only matches elements with BOTH opacity:0 */
+/* AND a translateY/translateX transform in their inline style, which */
+/* is the exact Motion initial pattern — it won't touch Radix popovers*/
+/* or other intentionally-hidden elements.                            */
+/* ------------------------------------------------------------------ */
+
+@keyframes ss-motion-reveal-fallback {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[style*="opacity:0"][style*="translate"] {
+  animation: ss-motion-reveal-fallback 0.01s 2.5s forwards;
+}
+
+/* Same idea for the "animate" variant where Motion uses translateY   */
+/* without an opacity component but the element is still invisible    */
+/* because its parent is at opacity:0 — cover the parent too.         */
+[style*="opacity:0"] {
+  animation: ss-motion-reveal-fallback 0.01s 3s forwards;
+}
